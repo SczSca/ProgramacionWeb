@@ -18,5 +18,26 @@ class Forms{
             form.reset();
         }
     }
+    showUserFound(userPosition, registeredUsers, form){
+        if(userPosition != null){
+            form.name.value = registeredUsers[userPosition].name;
+            form.username.value = registeredUsers[userPosition].username;
+            form.email.value = registeredUsers[userPosition].email;
+            form.website.value = registeredUsers[userPosition].website;
+            form.edad.value = registeredUsers[userPosition].edad;
+            this.toggleDisableInputs(form,true);
+            return registeredUsers[userPosition].id;
+        }
+        else{
+            form.reset();
+            this.toggleDisableInputs(form,false);
+        }
+    }
+    toggleDisableInputs(form, disableBool){
+        let inputs = form.getElementsByTagName("input");
+        for(let i = 0; i < inputs.length; i++){
+            inputs[i].disabled = disableBool;
+        }
+    }
 }
 export default Forms;

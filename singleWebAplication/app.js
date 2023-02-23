@@ -12,6 +12,7 @@ const form = new Forms("register");
 
 const formR = document.forms['registerForm'];
 const bodyTable = document.getElementById('table');
+const inputSearch = document.getElementById('inputSearch');
 
 montador.mountData(userData,usuario)
 interfaz.printUsers(usuario,bodyTable);
@@ -19,4 +20,10 @@ formR.addEventListener("submit",function(e){
     e.preventDefault();
     form.submit(formR, usuario);
     interfaz.printUsers(usuario, bodyTable)
+})
+inputSearch.addEventListener("change",function(e){
+    e.preventDefault();
+    console.log(usuario.buscar(inputSearch.value))
+    form.showUserFound(usuario.buscar(inputSearch.value), usuario.listar(), formR);
+
 })
