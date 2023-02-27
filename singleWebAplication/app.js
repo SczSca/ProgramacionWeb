@@ -1,29 +1,42 @@
 import Forms from './js/class/form.js'
 import Usuarios from './js/class/usuario.js'
+import Posts from './js/class/post.js'
 import UI from './js/class/ui.js'
 import Montador from './js/class/mount.js'
-import userData from './userData.json' assert {type: 'json'};
 
+import userData from './userData.json' assert {type: 'json'}
+import UserPosts from './userPosts.json' assert {type: 'json'}
 
 const interfaz = new UI;
-const usuario = new Usuarios();
+const usuarios = new Usuarios();
+const posts = new Posts();
 const montador = new Montador();
 const form = new Forms("register");
 
+const inputSearch = document.getElementById('inputSearch');
 const formR = document.forms['registerForm'];
 const bodyTable = document.getElementById('table');
-const inputSearch = document.getElementById('inputSearch');
+const usersSelectTag = document.getElementById('usersSelect');
+const divUsersPosts = document.getElementById('usersPosts');
 
-montador.mountData(userData,usuario)
-interfaz.printUsers(usuario,bodyTable);
+montador.mountData(userData,usuarios);
+montador.mountData(UserPosts, posts);
+interfaz.printUsers(usuarios.listar(),bodyTable);
+interfaz.mountUsersToSelect(usuarios.listar(),usersSelectTag);
+interfaz.printPosts(posts.getPosts(),usuarios.listar(),divUsersPosts);
+
 formR.addEventListener("submit",function(e){
     e.preventDefault();
-    form.submit(formR, usuario);
-    interfaz.printUsers(usuario, bodyTable)
+    form.submit(formR, usuarios);
+    interfaz.printUsers(usuarios, bodyTable)
 })
 inputSearch.addEventListener("change",function(e){
     e.preventDefault();
-    console.log(usuario.buscar(inputSearch.value))
-    form.showUserFound(usuario.buscar(inputSearch.value), usuario.listar(), formR);
+    console.log(usuarios.buscar(inputSearch.value))
+    form.showUserFound(usuarios.buscar(inputSearch.value), usuarios.listar(), formR);
 
+})
+usersSelectTag.addEventListener("change",function(e){
+    e.preventDefault();
+    //En proceso
 })

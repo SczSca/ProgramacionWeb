@@ -10,89 +10,103 @@
 </head>
 <body>
     <header>
-        <h1>Usuarios</h1>
+        <h1>Base de Datos de Usuarios y Posts</h1>
     </header>
     <main>
-        <form class="uk-search uk-search-default">
-            <span class="uk-search-icon-flip" uk-search-icon></span>
-            <input class="uk-search-input" id="inputSearch" type="search" placeholder="Buscar Usuario..." aria-label="Buscar Usuario...">
-        </form>
-        <div class="uk-container uk-width-1-3 uk-background-muted" id="registerInput">
-            <h2 class="align-center">Crear Usuario</h2>
-            <form class="uk-form-horizontal" id="registerForm" name="registerForm" action="login.html">
-                <div class="uk-margin">
-                    <div class="uk-form-label">
-                        <label class="uk-text-primary uk-text-default" for="name">Nombre</label>
-                    </div>
-                    <div class="uk-form-controls">
-                        <input class="uk-input uk-width-1-1" name="name" type="text" required>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-form-label">
-                        <label class="uk-text-primary uk-text-default" for="username">Usuario</label>
-                    </div>
-                    <div class="uk-form-controls">
-                        <input class="uk-input uk-width-1-1" name="username" type="text" required>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-form-label">
-                        <label class="uk-text-primary uk-text-default" for="email">Email</label>
-                    </div>
-                    <div class="uk-form-controls">
-                        <input class="uk-input uk-width-1-1" name="email" type="email" required>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-form-label">
-                        <label class="uk-text-primary uk-text-default" for="website">UrlWeb</label>
-                    </div>
-                    <div class="uk-form-controls">
-                        <input class="uk-input uk-width-1-1" type="url" name="website" required>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-form-label">
-                        <label class="uk-text-primary uk-text-default" for="edad">Edad</label>
-                    </div>
-                    <div class="uk-form-controls">
-                        <input class="uk-input uk-width-1-1" type="number" name="edad" required>
-                    </div>
-                </div>
-                <div class="uk-margin align-center">
-                    <input class="uk-button-primary uk-button-large" type="submit" value="Registrarse">
-                </div>
-                <!-- <label class="uk-text-primary uk-text-default" for="password">Contraseña</label>
-                <input class="uk-input" name="password" type="password" required> -->
+        <section class="inputs">
+            <form class="uk-search uk-search-default">
+                <span class="uk-search-icon-flip" uk-search-icon></span>
+                <input class="uk-search-input" id="inputSearch" type="search" placeholder="Buscar Usuario..." aria-label="Buscar Usuario...">
             </form>
-        </div>
-        <div id="allTable">
-            <table class="uk-table">
-                <thead>
-                    <tr>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Usuario
-                        </th>
-                        <th>
-                            Correo
-                        </th>
-                        <th>
-                            Edad
-                        </th>
-                        <th>
-                            Pagina web
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="table">
-                    
-                </tbody>
-            </table>
-        </div>
+    
+            <div class="uk-container uk-width-1-3 uk-background-muted" id="registerInput">
+                <h2 class="align-center">Crear Usuario</h2>
+                <form class="uk-form-horizontal" id="registerForm" name="registerForm" action="login.html">
+                    <div class="uk-margin">
+                        <div class="uk-form-label">
+                            <label class="uk-text-primary uk-text-default" for="name">Nombre</label>
+                        </div>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-width-1-1" name="name" type="text" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label">
+                            <label class="uk-text-primary uk-text-default" for="username">Usuario</label>
+                        </div>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-width-1-1" name="username" type="text" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label">
+                            <label class="uk-text-primary uk-text-default" for="email">Email</label>
+                        </div>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-width-1-1" name="email" type="email" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label">
+                            <label class="uk-text-primary uk-text-default" for="website">UrlWeb</label>
+                        </div>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-width-1-1" type="url" name="website" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label">
+                            <label class="uk-text-primary uk-text-default" for="edad">Edad</label>
+                        </div>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-width-1-1" type="number" name="edad" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin align-center">
+                        <input class="uk-button-primary uk-button-large" type="submit" value="Registrarse">
+                    </div>
+                    <!-- <label class="uk-text-primary uk-text-default" for="password">Contraseña</label>
+                    <input class="uk-input" name="password" type="password" required> -->
+                </form>
+            </div>
+        </section>
+
+        <table class="uk-table">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Usuario
+                    </th>
+                    <th>
+                        Correo
+                    </th>
+                    <th>
+                        Edad
+                    </th>
+                    <th>
+                        Pagina web
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="table">
+                
+            </tbody>
+        </table>
+
+        <section id="sectionPost">
+            <h2>Posts de Usuarios</h2>
+            <div class="uk-margin">
+                <select class="uk-select" name="users" id="usersSelect">
+                    <option value="allUsers" selected="selected">Todos</option>
+                </select>
+            </div>
+            <div class="uk-child-width-1-4@s" id="usersPosts" uk-grid>
+
+            </div>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.25/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.25/dist/js/uikit-icons.min.js"></script>
