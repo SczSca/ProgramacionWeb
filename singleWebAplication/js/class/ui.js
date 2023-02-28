@@ -13,15 +13,14 @@ class UI{
         })
     }
     printPosts(registeredUsersPosts,registeredUsers, divUsersPosts){
-        let i = 0;
-        let users = [];
         registeredUsers.forEach(user => {
             const divMain = document.createElement('div');
             const h3 = document.createElement('h3');
             const divPostsOfUser = document.createElement('div');
             h3.innerHTML =`Posts de ${user.username}`;
             divPostsOfUser.setAttribute('uk-sortable','group: sortable-group');
-            divPostsOfUser.setAttribute('id', 1000 + user.id);
+            divMain.setAttribute('class','allPostsContainer');
+            divMain.setAttribute('id', 1000 + user.id);
             divMain.appendChild(h3);
             divMain.appendChild(divPostsOfUser);
             divUsersPosts.appendChild(divMain);
@@ -51,10 +50,24 @@ class UI{
         })
     }
     
-    showUserPostsFromSelectedUser(posts, selectTag){
+    showUserPostsFromSelectedUser(mainDiv, selectTag){
         const selectedOption = selectTag.options[selectTag.selectedIndex];
-        if(isNaN(selectedOption.value) === false){
+        const allPostsContainers = mainDiv.querySelectorAll('.allPostsContainer');
+        if(selectedOption.value != 0){
             //En proceso
+            allPostsContainers.forEach(userPostContainer =>{
+                if(userPostContainer.id != selectedOption.value){
+                    userPostContainer.style.display = 'none';
+                }
+                else{
+                    userPostContainer.style.display ='block';
+                }
+            })
+        } 
+        else{
+            allPostsContainers.forEach(userPostContainer =>{
+                userPostContainer.style.display ='block';
+            })
         }
     }
 

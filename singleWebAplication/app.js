@@ -28,7 +28,7 @@ interfaz.printPosts(posts.getPosts(),usuarios.listar(),divUsersPosts);
 formR.addEventListener("submit",function(e){
     e.preventDefault();
     form.submit(formR, usuarios);
-    interfaz.printUsers(usuarios, bodyTable)
+    interfaz.printUsers(usuarios.listar(), bodyTable)
 })
 inputSearch.addEventListener("change",function(e){
     e.preventDefault();
@@ -39,4 +39,5 @@ inputSearch.addEventListener("change",function(e){
 usersSelectTag.addEventListener("change",function(e){
     e.preventDefault();
     //En proceso
+    interfaz.showUserPostsFromSelectedUser(divUsersPosts,this);
 })
