@@ -38,6 +38,5 @@ inputSearch.addEventListener("change",function(e){
 })
 usersSelectTag.addEventListener("change",function(e){
     e.preventDefault();
-    //En proceso
     interfaz.showUserPostsFromSelectedUser(divUsersPosts,this);
 })
