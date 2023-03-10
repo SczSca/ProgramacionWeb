@@ -43,7 +43,8 @@ selectForm.addEventListener('submit', e =>{// genera el formulario de edicion co
 editForm.addEventListener('submit', e =>{//actualiza los datos del usuario seleccionado
     e.preventDefault();
     typeObj = "posts";
-    functions.updateObject(mnuUsers.value,typeObj,functions.inputsToJson(inputs)
+    functions.updateObject(mnuUsers.value,typeObj,functions.inputsToJson(inputs))
+    .then(respuesta=>console.log(respuesta)); //como esta funcionando mediante promesas, debemos esperar la respuesta.
     // console.log()
-    )
+    
 });
