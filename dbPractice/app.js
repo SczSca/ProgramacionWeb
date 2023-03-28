@@ -68,30 +68,10 @@ connection.beginTransaction(function(err) { //uso de transaction para probar sin
                     console.log("Se cancelo la transferencia");
                     connection.end();//se termina la conexion luego de cancelar transferencia
                 })
-            });
-        });
-    });
+            });//end queryInsertFactura
+        });//end querySelectCliente
+    });//end queryInsertCliente
     
-  
-      /*  
-      connection.commit(function(err) {
-          if (err) {
-            return connection.rollback(function() {
-              throw err;
-            });
-          }
-          console.log('success!');
-        });
-        */
-      });
+});//end beginTransaction
       
-    
-
-   
-/*let queryDelete = connection.query('DELETE FROM clientes WHERE RFC = ?',cliente.rfc, function (error, results, fields) {
-    if (error) throw error;
-    console.log(results);
-    // console.log(fields);
-});
-*/
   
