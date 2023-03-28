@@ -25,7 +25,7 @@ class Functions {
         },
         })
         .then((response) => response.json())
-        .then((json) => json); //{return json} no retorna en consola
+        .then((json) => {return json;}); //{return json} no retorna en consola
         }
 }
 export default Functions;
