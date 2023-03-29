@@ -1,8 +1,28 @@
 import connection from './conexion.cjs';
 
 connection.connect();
-let cliente={nombre:'Nepomuceno', apellido:'Gutierrez', rfc:'NEPO231010',ciudad:'Colima', CP:'28010', correo:'conocido@gmail.com'};
-let factura={fecha:'2023/03/23', total:150, productos:[{fkProducto:1,cantidadOrdenada:5,precioIndividual:10},{fkProducto:2,cantidadOrdenada:5,precioIndividual:20}]};
+let cliente={
+    nombre:'Nepomuceno', 
+    apellido:'Gutierrez', 
+    rfc:'NEPO231010',
+    ciudad:'Colima', 
+    CP:'28010', 
+    correo:'conocido@gmail.com'
+};
+
+let factura={
+    fecha:'2023/03/23', 
+    total:150,
+    folio:'111AAA1A-1AA1-1A11-11A1-11A1AA111A11', 
+    productos:[{
+        fkProducto:1,cantidadOrdenada:5,
+        precioIndividual:10
+    },
+    {
+        fkProducto:2,cantidadOrdenada:5,
+        precioIndividual:20
+    }]
+};
 
 connection.beginTransaction(function(err) { //uso de transaction para probar sin insertar datos al servidor
     if (err) { throw err; }
@@ -23,6 +43,7 @@ connection.beginTransaction(function(err) { //uso de transaction para probar sin
             } 
             const idCliente = results[0].idCliente; //obtiene y guarda la id del cliente en sesión
             const datosFactura = { //json con los datos a ingresar para la factura
+                folio: factura.folio,
                 fecha:factura.fecha,
                 total:factura.total,
                 fkCLiente: idCliente
@@ -63,6 +84,14 @@ connection.beginTransaction(function(err) { //uso de transaction para probar sin
                     }
                     console.log(results);
                 });
+                let querySelectProductos = connection.query('SELECT * FROM productos',function(error,results,fields){
+                    if(error){
+                        return connection.rollback(()=>{
+                            throw error;
+                        });
+                    }
+                    console.log(results);
+                })
                 //rollback forzado para no mandar cambios al servidor
                 connection.rollback(()=>{
                     console.log("Se cancelo la transferencia");
