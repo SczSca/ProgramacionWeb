@@ -26,6 +26,7 @@ const InventarioClass = (() =>{
             return this.#productos;
         }
         //este metodo es funcional, pero utilizar addBSearchProducto para mas eficiencia
+        /*
         addProducto(producto){
             let pos;
             let i = 0;
@@ -86,7 +87,8 @@ const InventarioClass = (() =>{
             this.#productos[pos] = producto;
             return this.#productos;
         }
-        rankForBSearch(key){
+        */
+        rankForBSearch(key){ //binary search
             let lo = 0;
             let hi = this.#productos.length - 1;
             let mid = 0;
@@ -104,7 +106,7 @@ const InventarioClass = (() =>{
             }
             return [null,mid];
         }
-        binarySearch(code){
+        binarySearch(code){ //si sale null, producto no encontrado
             let posicion = this.rankForBSearch(code);
             if(posicion[0] == null)    return posicion[0];
             else                    return this.#productos[posicion[1]];
@@ -129,30 +131,7 @@ const InventarioClass = (() =>{
                 }   
             
         }
-        showProductos(){
-            let line = "";
-            for(i in this.#productos){ //imprime todos los #productos
-                line += `<div class= "show"> <li>  <b> Id :</b> ${Number(i) + 1} <br>
-                    <b>Nombre :</b>${this.#productos[i].name} <br>
-                    <b>Codigo :</b><a>${this.#productos[i].getId()}</a> <br>
-                    <b>Costo :</b>${this.#productos[i].costo} <br>
-                    <b>Cantidad :</b> ${this.#productos[i].cantidad}
-                    </li></div>`
-            }
-            return line;
-        }
-        showProductoInverso(){
-            let line = "";
-            for(let i = this.#productos.length - 1; i >= 0; i--){ //imprime todos los #productos
-                line += `<div class= "show"> <li>  <b> Id :</b> ${Number(i) + 1} <br>
-                    <b>Nombre :</b>${this.#productos[i].name} <br>
-                    <b>Codigo :</b><a>${this.#productos[i].getId()}</a> <br>
-                    <b>Costo :</b>${this.#productos[i].costo} <br>
-                    <b>Cantidad :</b> ${this.#productos[i].cantidad}
-                    </li></div>`
-            }
-            return line;
-        }
+        //busqueda de obj sin meto
         searchProducto(code){ 
             let aux = 1;
             let value;
